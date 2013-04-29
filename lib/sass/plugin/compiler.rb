@@ -242,7 +242,7 @@ module Sass::Plugin
 
       # TODO: Keep better track of what depends on what
       # so we don't have to run a global update every time anything changes.
-      listener = Listen::MultiListener.new(*directories) do |modified, added, removed|
+      listener = Listen::Listener.new(*directories) do |modified, added, removed|
         modified.each do |f|
           parent = File.dirname(f)
           if files = individual_files_hash[parent]
